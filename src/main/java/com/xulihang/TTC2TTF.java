@@ -13,7 +13,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TTC2TTF {
-    public static List<PDType0Font> loadTTCFontsToDoc(PDDocument doc, String ttcFilePath) {
+    public static List<PDType0Font> loadTTCFontsToDoc(PDDocument doc, TrueTypeCollection ttc) throws IOException {
+        List<PDType0Font> fonts = new ArrayList<>();
+        // 使用processAllFonts方法处理所有字体
+        ttc.processAllFonts(new TrueTypeCollection.TrueTypeFontProcessor() {
+            @Override
+            public void process(TrueTypeFont ttf) throws IOException {
+                PDType0Font font = PDType0Font.load(doc, ttf, true);
+                fonts.add(font);
+            }
+        });
+        return fonts;
+    }
+
+    public static List<PDType0Font> loadTTCFontsToDoc2(PDDocument doc, String ttcFilePath) {
         File ttcFile = new File(ttcFilePath);
         List<PDType0Font> fonts = new ArrayList<>();
         // 使用try-with-resources确保TTC集合被正确关闭

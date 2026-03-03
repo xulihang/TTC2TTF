@@ -20,7 +20,9 @@ public class Main {
         //    System.out.println(name);
         //}
         PDDocument document = new PDDocument();
-        List<PDType0Font> fonts = TTC2TTF.loadTTCFontsToDoc(document,ttcFilePath);
+        File ttcFile = new File(ttcFilePath);
+        TrueTypeCollection ttc = new TrueTypeCollection(ttcFile);
+        List<PDType0Font> fonts = TTC2TTF.loadTTCFontsToDoc(document,ttc);
         for (var font:fonts) {
             System.out.println(font.getName());
         }
