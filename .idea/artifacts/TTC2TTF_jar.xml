@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TTC2TTF:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TTC2TTF_jar</output-path>
+    <root id="archive" name="TTC2TTF.jar">
+      <element id="module-output" name="TTC2TTF" />
+    </root>
+  </artifact>
+</component>
